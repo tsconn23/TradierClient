@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradierClient", "TradierClient\TradierClient.csproj", "{ADE34AE4-DDCB-4C56-8CCE-E1A2255E4503}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradierClient.Harness", "TradierClient.Harness\TradierClient.Harness.csproj", "{EDBE9CE0-DCCD-478E-AEDF-0EA628E23381}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ADE34AE4-DDCB-4C56-8CCE-E1A2255E4503}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADE34AE4-DDCB-4C56-8CCE-E1A2255E4503}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADE34AE4-DDCB-4C56-8CCE-E1A2255E4503}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADE34AE4-DDCB-4C56-8CCE-E1A2255E4503}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDBE9CE0-DCCD-478E-AEDF-0EA628E23381}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDBE9CE0-DCCD-478E-AEDF-0EA628E23381}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDBE9CE0-DCCD-478E-AEDF-0EA628E23381}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDBE9CE0-DCCD-478E-AEDF-0EA628E23381}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
