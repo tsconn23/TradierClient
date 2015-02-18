@@ -9,8 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TradierClient;
-using TradierClient.Exchange;
-using TradierClient.Operations.Requests;
+
 
 namespace TradierClient.Harness
 {
@@ -21,21 +20,22 @@ namespace TradierClient.Harness
             InitializeComponent();
         }
 
-        private async void btnGo_Click(object sender, EventArgs e)
+        void cmbApiCall_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-            if (!ValidateInput()) return;
-
-            var tradierGateway = InitializeGateway();
-
-            switch(cmbApiCall.SelectedItem.ToString())
+            if (cmbApiCall.SelectedIndex > -1)
             {
-                case "Market/GetQuotes":
-                    var request = new GetQuotesRequest(txtSymbols.Text, ",");
-                    var response = await tradierGateway.MarketData.GetQuotes(request);
-                    txtResponse.Text = response.Content;
-                    break;
+                if (cmbMessageFormat.SelectedItem == null)
+                {
+                    MessageBox.Show("Please select desired Message Format.");
+                    cmbApiCall.SelectedIndex = -1;
+                    return;
+                }
+
+                var tradierGateway = InitializeGateway();
+                FindControlAndAddToContainer(tradierGateway, cmbApiCall.SelectedItem.ToString());
             }
         }
+
 
         private Gateway InitializeGateway()
         {
@@ -54,31 +54,16 @@ namespace TradierClient.Harness
             return gateway;
         }
 
-        private bool ValidateInput()
+        private void FindControlAndAddToContainer(Gateway gateway, string apiCall)
         {
-            bool isValid = true;
-            string msgValidation = "";
+            pnlControlContainer.Controls.Clear();
 
-            if(txtSymbols.Text.Length == 0)
+            switch (apiCall)
             {
-                isValid = false;
-                msgValidation = "Symbols textbox cannot be blank.\r\n";
+                case "Market/GetQuotes":
+                    pnlControlContainer.Controls.Add(new Controls.MarketData.GetQuotes(gateway, apiCall));
+                    break;
             }
-            if(cmbApiCall.SelectedIndex < 0)
-            {
-                isValid = false;
-                msgValidation += "Please select an API Call.\r\n";
-            }
-            if(cmbMessageFormat.SelectedIndex < 0)
-            {
-                isValid = false;
-                msgValidation += "Please select desired Message Format.\r\n";
-            }
-
-            if (msgValidation.Length > 0)
-                MessageBox.Show(msgValidation);
-
-            return isValid;
         }
     }
 }
