@@ -21,30 +21,31 @@ namespace TradierClient.Exchange
         public async Task<bool> Call(ITradierCommand cmd)
         {
             bool success = false;
+
+            HttpRequestMessage request = null;
+            if (cmd.HttpMethod == HttpMethod.Get)
+            {
+                request = CreateGetRequest(cmd);
+            }
+            else if (cmd.HttpMethod == HttpMethod.Post)
+            { }
+            else
+                throw new ArgumentOutOfRangeException(String.Format("Unrecognized HttpMethod value on ITradierCommand: {0}", cmd.HttpMethod.Method));
+
+            //Initialize headers common to every call
+            request.Headers.Accept.Clear();
+            if (cmd.MessageFormat.CompareTo(MessageFormatEnum.JSON) == 0)
+            {
+                request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            }
+            else //defaulting to Xml
+            {
+                request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/xml"));
+            }
+            request.Headers.Add("Authorization", String.Format("Bearer {0}", cmd.AccessToken));
+
             using(HttpClient client = new HttpClient())
             {
-                var request = new HttpRequestMessage();
-                request.Method = cmd.HttpMethod;
-                request.Headers.Accept.Clear();
-                if (cmd.MessageFormat.CompareTo(MessageFormatEnum.JSON) == 0)
-                {
-                    request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                }
-                else //defaulting to Xml
-                {
-                    request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/xml"));
-                }
-                request.Headers.Add("Authorization", String.Format("Bearer {0}", cmd.AccessToken));
-
-                StringBuilder sbParams = new StringBuilder();
-                foreach(string key in cmd.Parameters.Keys)
-                {
-                    if(sbParams.Length > 0)
-                        sbParams.Append("&");
-
-                    sbParams.Append(HttpUtility.UrlEncode(key) + "=" + HttpUtility.UrlEncode(cmd.Parameters[key]));
-                }
-                request.RequestUri = new Uri(String.Format("{0}{1}?{2}", _apiHost, cmd.UriStem, sbParams.ToString()));
                 HttpResponseMessage response = await client.SendAsync(request);
 
                 success = response.IsSuccessStatusCode;
@@ -54,6 +55,42 @@ namespace TradierClient.Exchange
                 cmd.RawResponse = raw;
             }
             return success;
+        }
+
+        private HttpRequestMessage CreatePostRequest(ITradierCommand cmd)
+        {
+            var request = new HttpRequestMessage();
+            request.Method = cmd.HttpMethod; 
+            
+            StringBuilder sbParams = new StringBuilder();
+            foreach (string key in cmd.Parameters.Keys)
+            {
+                if (sbParams.Length > 0)
+                    sbParams.Append("&");
+
+                sbParams.Append(HttpUtility.UrlEncode(key) + "=" + HttpUtility.UrlEncode(cmd.Parameters[key]));
+            }
+
+            request.Content = new StringContent(sbParams.ToString());
+            //TODO: Need to set RequestUri here.
+            return request;
+        }
+
+        private HttpRequestMessage CreateGetRequest(ITradierCommand cmd)
+        {
+            var request = new HttpRequestMessage();
+            request.Method = cmd.HttpMethod;
+
+            StringBuilder sbParams = new StringBuilder();
+            foreach (string key in cmd.Parameters.Keys)
+            {
+                if (sbParams.Length > 0)
+                    sbParams.Append("&");
+
+                sbParams.Append(HttpUtility.UrlEncode(key) + "=" + HttpUtility.UrlEncode(cmd.Parameters[key]));
+            }
+            request.RequestUri = new Uri(String.Format("{0}{1}?{2}", _apiHost, cmd.UriStem, sbParams.ToString()));
+            return request;
         }
     }
 }
