@@ -60,8 +60,11 @@ namespace TradierClient.Harness
 
             switch (apiCall)
             {
-                case "Market/GetQuotes":
+                case "Market/Get Quotes":
                     pnlControlContainer.Controls.Add(new Controls.MarketData.GetQuotes(gateway, apiCall));
+                    break;
+                case "Market/Get Time And Sales":
+                    pnlControlContainer.Controls.Add(new Controls.MarketData.GetTimeAndSales(gateway, apiCall));
                     break;
             }
         }

@@ -8,8 +8,6 @@ namespace TradierClient.Exchange.Interfaces
 {
     internal interface ITradierResponse
     {
-        int StatusCode { get; set; }
-
-        string Content { get; set; }
+        RawResponse RawResponse { get; set; }
     }
 }

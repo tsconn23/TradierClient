@@ -58,6 +58,12 @@
     <Compile Include="Controls\MarketData\GetQuotes.Designer.cs">
       <DependentUpon>GetQuotes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\MarketData\GetTimeAndSales.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MarketData\GetTimeAndSales.Designer.cs">
+      <DependentUpon>GetTimeAndSales.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +74,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Controls\MarketData\GetQuotes.resx">
       <DependentUpon>GetQuotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MarketData\GetTimeAndSales.resx">
+      <DependentUpon>GetTimeAndSales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

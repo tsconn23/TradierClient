@@ -21,18 +21,33 @@ namespace TradierClient.Operations
             _gateway = gateway;
         }
 
-        public async Task<GetQuotesResponse> GetQuotes(GetQuotesRequest cmd)
+        public async Task<GetQuotesResponse> GetQuotes(GetQuotesRequest request)
         {
-            var command = new GetQuotesCommand(cmd.Symbols, _gateway.AccesToken);
+            var command = new GetQuotesCommand(request.Symbols, _gateway.AccesToken);
             command.MessageFormat = _gateway.MessageFormat;
             //Send command to API
             var caller = new ApiCaller();
             await caller.Call(command);
             //Some handling of the response
-            var response = new GetQuotesResponse();
-            response.StatusCode = command.RawResponse.StatusCode;
-            response.Content = command.RawResponse.Content;
-            //Create our object model if applicable
+            var response = new GetQuotesResponse(command.RawResponse);
+            return response;
+        }
+
+        public async Task<GetTimeAndSalesResponse> GetTimeAndSales(GetTimeAndSalesRequest request)
+        {
+            var command = new GetTimeAndSalesCommand(request.Symbol, _gateway.AccesToken);
+            command.MessageFormat = _gateway.MessageFormat;
+
+            command.Interval = request.Interval;
+            command.SessionFilter = request.SessionFilter;
+            command.StartDateTime = request.StartDateTime;
+            command.EndDateTime = request.EndDateTime;
+
+            //Send command to API
+            var caller = new ApiCaller();
+            await caller.Call(command);
+            //Some handling of the response
+            var response = new GetTimeAndSalesResponse(command.RawResponse);
             return response;
         }
     }

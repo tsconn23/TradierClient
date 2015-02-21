@@ -53,7 +53,7 @@ namespace TradierClient.Harness.Controls.MarketData
             if (!ValidateInput()) return;
             var request = new GetQuotesRequest(txtSymbols.Text, ",");
             var response = await ApiGateway.MarketData.GetQuotes(request);
-            txtResponse.Text = response.Content;
+            txtResponse.Text = response.RawResponse.Content;
         }
     }
 }

@@ -55,6 +55,7 @@
             this.cmbMessageFormat.Name = "cmbMessageFormat";
             this.cmbMessageFormat.Size = new System.Drawing.Size(121, 21);
             this.cmbMessageFormat.TabIndex = 4;
+            this.cmbMessageFormat.SelectedIndex = 0;
             // 
             // label4
             // 
@@ -70,7 +71,8 @@
             // 
             this.cmbApiCall.FormattingEnabled = true;
             this.cmbApiCall.Items.AddRange(new object[] {
-            "Market/GetQuotes"});
+            "Market/Get Quotes",
+            "Market/Get Time And Sales"});
             this.cmbApiCall.Location = new System.Drawing.Point(305, 6);
             this.cmbApiCall.Name = "cmbApiCall";
             this.cmbApiCall.Size = new System.Drawing.Size(380, 21);

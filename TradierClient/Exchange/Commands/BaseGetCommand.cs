@@ -24,10 +24,19 @@ namespace TradierClient.Exchange.Commands
 
         public MessageFormatEnum MessageFormat { get; set; }
 
-        protected Dictionary<string, string> _parameters;
-        public virtual Dictionary<string, string> Parameters
+        private Dictionary<string, string> _parameters;
+        public Dictionary<string, string> Parameters
         {
             get { return _parameters; }
+        }
+
+        protected void AddParameter(string key, string value)
+        {
+            if (_parameters == null) _parameters = new Dictionary<string, string>();
+            if (!_parameters.ContainsKey(key))
+                _parameters.Add(key, value);
+            else
+                _parameters[key] = value;
         }
 
         public virtual string UriStem
@@ -40,6 +49,11 @@ namespace TradierClient.Exchange.Commands
         {
             get { return _rawResponse; }
             set { _rawResponse = value; }
+        }
+
+        protected string DateTimeFormat
+        {
+            get { return "yyyy-MM-dd HH:mm"; }
         }
     }
 }

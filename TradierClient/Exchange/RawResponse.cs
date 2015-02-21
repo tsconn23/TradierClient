@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TradierClient.Exchange
 {
-    internal class RawResponse
+    public class RawResponse
     {
         public RawResponse(int statusCode, string content)
         {

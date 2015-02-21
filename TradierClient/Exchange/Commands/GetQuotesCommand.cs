@@ -11,8 +11,7 @@ namespace TradierClient.Exchange.Commands
     {
         public GetQuotesCommand(string[] symbols, string accessToken)
         {
-            _parameters = new Dictionary<string, string>();
-            _parameters.Add("symbols", String.Join(",", symbols ?? new string[] { }));
+            AddParameter("symbols", String.Join(",", symbols ?? new string[] { }));
             AccessToken = accessToken;
         }
 
