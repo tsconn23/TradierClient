@@ -55,5 +55,10 @@ namespace TradierClient.Exchange.Commands
         {
             get { return "yyyy-MM-dd HH:mm"; }
         }
+
+        protected string DateFormat
+        {
+            get { return "yyyy-MM-dd"; }
+        }
     }
 }

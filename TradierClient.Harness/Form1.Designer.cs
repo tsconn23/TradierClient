@@ -71,13 +71,14 @@
             // 
             this.cmbApiCall.FormattingEnabled = true;
             this.cmbApiCall.Items.AddRange(new object[] {
+            "Market/Get Option Chain",
             "Market/Get Quotes",
             "Market/Get Time And Sales"});
             this.cmbApiCall.Location = new System.Drawing.Point(305, 6);
             this.cmbApiCall.Name = "cmbApiCall";
             this.cmbApiCall.Size = new System.Drawing.Size(380, 21);
             this.cmbApiCall.TabIndex = 6;
-            this.cmbApiCall.SelectedIndexChanged += cmbApiCall_SelectedIndexChanged;
+            this.cmbApiCall.SelectedIndexChanged +=cmbApiCall_SelectedIndexChanged;
             // 
             // pnlControlContainer
             // 

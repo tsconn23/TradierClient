@@ -15,7 +15,8 @@ namespace TradierClient.Harness.Controls.MarketData
 {
     public partial class GetTimeAndSales : BaseHarnessControl
     {
-        public GetTimeAndSales() : base()
+        public GetTimeAndSales()
+            : base()
         {
             InitializeComponent();
         }
@@ -31,7 +32,7 @@ namespace TradierClient.Harness.Controls.MarketData
             bool isValid = true;
             var sbError = new StringBuilder();
 
-            if(txtSymbol.Text.Length == 0)
+            if (txtSymbol.Text.Length == 0)
             {
                 isValid = false;
                 sbError.Append("You must supply a symbol.\r\n");
@@ -45,30 +46,30 @@ namespace TradierClient.Harness.Controls.MarketData
 
         private async void btnGo_Click(object sender, EventArgs e)
         {
-            if(ValidateInput())
+            if (!ValidateInput()) return;
+
+            var request = new GetTimeAndSalesRequest(txtSymbol.Text);
+
+            if (cmbInterval.SelectedItem != null)
+                request.Interval = cmbInterval.SelectedItem.ToString().ToLower();
+
+            if (cmbSession.SelectedItem != null)
             {
-                var request = new GetTimeAndSalesRequest(txtSymbol.Text);
-                    
-                if(cmbInterval.SelectedItem != null)
-                    request.Interval = cmbInterval.SelectedItem.ToString().ToLower();
-
-                if (cmbSession.SelectedItem != null)
-                {
-                    if (cmbSession.SelectedItem.ToString() == "Include Pre/After Market")
-                        request.SessionFilter = "all";
-                    else
-                        request.SessionFilter = "open";
-                }
-
-                if (dateTimeEnd.Value.CompareTo(SqlDateTime.MinValue.Value) > 0)
-                    request.EndDateTime = dateTimeEnd.Value;
-
-                if (dateTimeStart.Value.CompareTo(SqlDateTime.MinValue.Value) > 0)
-                    request.StartDateTime = dateTimeStart.Value;
-
-                var response = await ApiGateway.MarketData.GetTimeAndSales(request);
-                txtResponse.Text = response.RawResponse.Content;
+                if (cmbSession.SelectedItem.ToString() == "Include Pre/After Market")
+                    request.SessionFilter = "all";
+                else
+                    request.SessionFilter = "open";
             }
+
+            if (dateTimeEnd.Value.CompareTo(SqlDateTime.MinValue.Value) > 0)
+                request.EndDateTime = dateTimeEnd.Value;
+
+            if (dateTimeStart.Value.CompareTo(SqlDateTime.MinValue.Value) > 0)
+                request.StartDateTime = dateTimeStart.Value;
+
+            var response = await ApiGateway.MarketData.GetTimeAndSales(request);
+            txtResponse.Text = response.RawResponse.Content;
+
         }
     }
 }

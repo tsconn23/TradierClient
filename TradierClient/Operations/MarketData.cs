@@ -50,5 +50,18 @@ namespace TradierClient.Operations
             var response = new GetTimeAndSalesResponse(command.RawResponse);
             return response;
         }
+
+        public async Task<GetOptionChainResponse> GetOptionChain(GetOptionChainRequest request)
+        {
+            var command = new GetOptionChainCommand(request.Symbol, request.Expiration, _gateway.AccesToken);
+            command.MessageFormat = _gateway.MessageFormat;
+
+            //Send command to API
+            var caller = new ApiCaller();
+            await caller.Call(command);
+            //Some handling of the response
+            var response = new GetOptionChainResponse(command.RawResponse);
+            return response;
+        }
     }
 }

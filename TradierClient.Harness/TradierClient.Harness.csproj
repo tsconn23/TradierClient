@@ -52,6 +52,12 @@
     <Compile Include="Controls\BaseHarnessControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\MarketData\GetOptionChain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MarketData\GetOptionChain.Designer.cs">
+      <DependentUpon>GetOptionChain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\MarketData\GetQuotes.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -72,6 +78,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\MarketData\GetOptionChain.resx">
+      <DependentUpon>GetOptionChain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\MarketData\GetQuotes.resx">
       <DependentUpon>GetQuotes.cs</DependentUpon>
     </EmbeddedResource>
