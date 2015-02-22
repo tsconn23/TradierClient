@@ -63,5 +63,31 @@ namespace TradierClient.Operations
             var response = new GetOptionChainResponse(command.RawResponse);
             return response;
         }
+
+        public async Task<GetOptionExpirationResponse> GetOptionExpirations(GetOptionExpirationRequest request)
+        {
+            var command = new GetOptionExpirationCommand(request.Symbol, _gateway.AccesToken);
+            command.MessageFormat = _gateway.MessageFormat;
+
+            //Send command to API
+            var caller = new ApiCaller();
+            await caller.Call(command);
+            //Some handling of the response
+            var response = new GetOptionExpirationResponse(command.RawResponse);
+            return response;
+        }
+
+        public async Task<GetOptionStrikeResponse> GetOptionStrikes(GetOptionStrikeRequest request)
+        {
+            var command = new GetOptionStrikeCommand(request.Symbol, request.Expiration, _gateway.AccesToken);
+            command.MessageFormat = _gateway.MessageFormat;
+
+            //Send command to API
+            var caller = new ApiCaller();
+            await caller.Call(command);
+            //Some handling of the response
+            var response = new GetOptionStrikeResponse(command.RawResponse);
+            return response;
+        }
     }
 }

@@ -23,6 +23,10 @@ namespace TradierClient.Harness.Controls.MarketData
             : base(apiGateway, apiCall)
         {
             InitializeComponent();
+            if (ApiCall.CompareTo("Market/Get Option Expirations") == 0)
+            {
+                label2.Text = "** Only one symbol may be used when fetching option expirations. **";
+            }
         }
 
         private bool ValidateInput()
@@ -51,9 +55,21 @@ namespace TradierClient.Harness.Controls.MarketData
         private async void btnGo_Click(object sender, EventArgs e)
         {
             if (!ValidateInput()) return;
-            var request = new GetQuotesRequest(txtSymbols.Text, ",");
-            var response = await ApiGateway.MarketData.GetQuotes(request);
-            txtResponse.Text = response.RawResponse.Content;
+            string responseText = "";
+
+            if (ApiCall.CompareTo("Market/Get Quotes") == 0)
+            {
+                var request = new GetQuotesRequest(txtSymbols.Text, ",");
+                var response = await ApiGateway.MarketData.GetQuotes(request);
+                responseText = response.RawResponse.Content;
+            }
+            else if (ApiCall.CompareTo("Market/Get Option Expirations") == 0)
+            {
+                var request = new GetOptionExpirationRequest(txtSymbols.Text);
+                var response = await ApiGateway.MarketData.GetOptionExpirations(request);
+                responseText = response.RawResponse.Content;
+            }
+            txtResponse.Text = responseText;
         }
     }
 }

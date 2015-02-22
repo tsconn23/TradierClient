@@ -51,9 +51,22 @@ namespace TradierClient.Harness.Controls.MarketData
         private async void btnGo_Click(object sender, EventArgs e)
         {
             if (!ValidateInput()) return;
-            var request = new GetOptionChainRequest(txtSymbol.Text, dateTimeExpiration.Value);
-            var response = await ApiGateway.MarketData.GetOptionChain(request);
-            txtResponse.Text = response.RawResponse.Content;
+
+            string responseText = "";
+            if (ApiCall.CompareTo("Market/Get Option Strikes") == 0)
+            {
+                var request = new GetOptionStrikeRequest(txtSymbol.Text, dateTimeExpiration.Value);
+                var response = await ApiGateway.MarketData.GetOptionStrikes(request);
+                responseText = response.RawResponse.Content;
+            }
+            else //execute get option chain by default
+            {
+                var request = new GetOptionChainRequest(txtSymbol.Text, dateTimeExpiration.Value);
+                var response = await ApiGateway.MarketData.GetOptionChain(request);
+                responseText = response.RawResponse.Content;
+            }
+
+            txtResponse.Text = responseText;
         }
     }
 }

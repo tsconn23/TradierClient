@@ -72,6 +72,8 @@
             this.cmbApiCall.FormattingEnabled = true;
             this.cmbApiCall.Items.AddRange(new object[] {
             "Market/Get Option Chain",
+            "Market/Get Option Expirations",
+            "Market/Get Option Strikes",
             "Market/Get Quotes",
             "Market/Get Time And Sales"});
             this.cmbApiCall.Location = new System.Drawing.Point(305, 6);
