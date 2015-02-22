@@ -25,6 +25,17 @@ namespace TradierClient.Harness.Controls.MarketData
             : base(apiGateway, apiCall)
         {
             InitializeComponent();
+            if(ApiCall.CompareTo("Market/Get Historical Pricing") == 0)
+            {
+                label3.Visible = false;
+                cmbSession.Visible = false;
+                cmbSession.SelectedItem = null;
+
+                cmbInterval.Items.Clear();
+                cmbInterval.Items.Add("daily");
+                cmbInterval.Items.Add("weekly");
+                cmbInterval.Items.Add("monthly");
+            }
         }
 
         private bool ValidateInput()
@@ -47,28 +58,52 @@ namespace TradierClient.Harness.Controls.MarketData
         private async void btnGo_Click(object sender, EventArgs e)
         {
             if (!ValidateInput()) return;
-
-            var request = new GetTimeAndSalesRequest(txtSymbol.Text);
+            
+            string responseText = "";
+            string interval = "";
+            string sessionFilter = "";
+            DateTime? dtEnd = null;
+            DateTime? dtStart = null;
+            
 
             if (cmbInterval.SelectedItem != null)
-                request.Interval = cmbInterval.SelectedItem.ToString().ToLower();
+                interval = cmbInterval.SelectedItem.ToString().ToLower();
 
             if (cmbSession.SelectedItem != null)
             {
                 if (cmbSession.SelectedItem.ToString() == "Include Pre/After Market")
-                    request.SessionFilter = "all";
+                    sessionFilter = "all";
                 else
-                    request.SessionFilter = "open";
+                    sessionFilter = "open";
             }
 
             if (dateTimeEnd.Value.CompareTo(SqlDateTime.MinValue.Value) > 0)
-                request.EndDateTime = dateTimeEnd.Value;
+                dtEnd = dateTimeEnd.Value;
 
             if (dateTimeStart.Value.CompareTo(SqlDateTime.MinValue.Value) > 0)
-                request.StartDateTime = dateTimeStart.Value;
+                dtStart = dateTimeStart.Value;
 
-            var response = await ApiGateway.MarketData.GetTimeAndSales(request);
-            txtResponse.Text = response.RawResponse.Content;
+            if (ApiCall.CompareTo("Market/Get Historical Pricing") == 0)
+            {
+                var request = new GetHistoricalPricingRequest(txtSymbol.Text);
+                request.Interval = interval;
+                request.StartDateTime = dtStart;
+                request.EndDateTime = dtEnd;
+                var response = await ApiGateway.MarketData.GetHistoricalPricing(request);
+                responseText = response.RawResponse.Content;
+            }
+            else if (ApiCall.CompareTo("Market/Get Time And Sales") == 0)
+            {
+                var request = new GetTimeAndSalesRequest(txtSymbol.Text);
+                request.Interval = interval;
+                request.SessionFilter = sessionFilter;
+                request.StartDateTime = dtStart;
+                request.EndDateTime = dtEnd;
+                var response = await ApiGateway.MarketData.GetTimeAndSales(request);
+                responseText = response.RawResponse.Content;
+            }
+            
+            txtResponse.Text = responseText;
 
         }
     }

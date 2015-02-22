@@ -49,6 +49,8 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Exchange\ApiCaller.cs" />
     <Compile Include="Exchange\Commands\BaseGetCommand.cs" />
+    <Compile Include="Exchange\Commands\GetHistoricalPricingCommand.cs" />
+    <Compile Include="Exchange\Commands\GetIntradayStatusCommand.cs" />
     <Compile Include="Exchange\Commands\GetOptionChainCommand.cs" />
     <Compile Include="Exchange\Commands\GetOptionExpirationCommand.cs" />
     <Compile Include="Exchange\Commands\GetOptionStrikeCommand.cs" />
@@ -58,6 +60,8 @@
     <Compile Include="Exchange\Interfaces\ITradierResponse.cs" />
     <Compile Include="Exchange\RawResponse.cs" />
     <Compile Include="Exchange\Responses\BaseResponse.cs" />
+    <Compile Include="Exchange\Responses\GetHistoricalPricingResponse.cs" />
+    <Compile Include="Exchange\Responses\GetIntradayStatusResponse.cs" />
     <Compile Include="Exchange\Responses\GetOptionChainResponse.cs" />
     <Compile Include="Exchange\Responses\GetOptionExpirationResponse.cs" />
     <Compile Include="Exchange\Responses\GetOptionStrikeResponse.cs" />
@@ -65,6 +69,7 @@
     <Compile Include="Exchange\Responses\GetTimeAndSalesResponse.cs" />
     <Compile Include="Gateway.cs" />
     <Compile Include="Operations\MarketData.cs" />
+    <Compile Include="Operations\Requests\GetHistoricalPricingRequest.cs" />
     <Compile Include="Operations\Requests\GetOptionChainRequest.cs" />
     <Compile Include="Operations\Requests\GetOptionExpirationRequest.cs" />
     <Compile Include="Operations\Requests\GetOptionStrikeRequest.cs" />

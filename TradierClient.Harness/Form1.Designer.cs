@@ -71,6 +71,8 @@
             // 
             this.cmbApiCall.FormattingEnabled = true;
             this.cmbApiCall.Items.AddRange(new object[] {
+            "Market/Get Historical Pricing",
+            "Market/Get Intraday Status",
             "Market/Get Option Chain",
             "Market/Get Option Expirations",
             "Market/Get Option Strikes",

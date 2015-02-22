@@ -69,7 +69,11 @@ namespace TradierClient.Harness
                     pnlControlContainer.Controls.Add(new Controls.MarketData.GetQuotes(gateway, apiCall));
                     break;
                 case "Market/Get Time And Sales":
+                case "Market/Get Historical Pricing":
                     pnlControlContainer.Controls.Add(new Controls.MarketData.GetTimeAndSales(gateway, apiCall));
+                    break;
+                case "Market/Get Intraday Status":
+                    pnlControlContainer.Controls.Add(new Controls.MarketData.GetIntradayStatus(gateway, apiCall));
                     break;
             }
         }

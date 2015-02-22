@@ -27,7 +27,11 @@ namespace TradierClient.Exchange.Commands
         private Dictionary<string, string> _parameters;
         public Dictionary<string, string> Parameters
         {
-            get { return _parameters; }
+            get 
+            {
+                if (_parameters == null) _parameters = new Dictionary<string, string>();
+                return _parameters; 
+            }
         }
 
         protected void AddParameter(string key, string value)

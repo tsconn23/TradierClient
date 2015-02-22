@@ -33,6 +33,18 @@ namespace TradierClient.Operations
             return response;
         }
 
+        public async Task<GetIntradayStatusResponse> GetIntradayStatus()
+        {
+            var command = new GetIntradayStatusCommand(_gateway.AccesToken);
+            command.MessageFormat = _gateway.MessageFormat;
+            //Send command to API
+            var caller = new ApiCaller();
+            await caller.Call(command);
+            //Some handling of the response
+            var response = new GetIntradayStatusResponse(command.RawResponse);
+            return response;
+        }
+
         public async Task<GetTimeAndSalesResponse> GetTimeAndSales(GetTimeAndSalesRequest request)
         {
             var command = new GetTimeAndSalesCommand(request.Symbol, _gateway.AccesToken);
@@ -48,6 +60,23 @@ namespace TradierClient.Operations
             await caller.Call(command);
             //Some handling of the response
             var response = new GetTimeAndSalesResponse(command.RawResponse);
+            return response;
+        }
+
+        public async Task<GetHistoricalPricingResponse> GetHistoricalPricing(GetHistoricalPricingRequest request)
+        {
+            var command = new GetHistoricalPricingCommand(request.Symbol, _gateway.AccesToken);
+            command.MessageFormat = _gateway.MessageFormat;
+
+            command.Interval = request.Interval;
+            command.StartDateTime = request.StartDateTime;
+            command.EndDateTime = request.EndDateTime;
+
+            //Send command to API
+            var caller = new ApiCaller();
+            await caller.Call(command);
+            //Some handling of the response
+            var response = new GetHistoricalPricingResponse(command.RawResponse);
             return response;
         }
 
