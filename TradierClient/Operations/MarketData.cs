@@ -45,6 +45,18 @@ namespace TradierClient.Operations
             return response;
         }
 
+        public async Task<GetMarketCalendarResponse> GetMarketCalendar(GetMarketCalendarRequest request)
+        {
+            var command = new GetMarketCalendarCommand(request.Month, request.Year, _gateway.AccesToken);
+            command.MessageFormat = _gateway.MessageFormat;
+            //Send command to API
+            var caller = new ApiCaller();
+            await caller.Call(command);
+            //Some handling of the response
+            var response = new GetMarketCalendarResponse(command.RawResponse);
+            return response;
+        }
+
         public async Task<GetTimeAndSalesResponse> GetTimeAndSales(GetTimeAndSalesRequest request)
         {
             var command = new GetTimeAndSalesCommand(request.Symbol, _gateway.AccesToken);
