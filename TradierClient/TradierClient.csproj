@@ -49,6 +49,7 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Exchange\ApiCaller.cs" />
     <Compile Include="Exchange\Commands\BaseGetCommand.cs" />
+    <Compile Include="Exchange\Commands\GetCompanySearchCommand.cs" />
     <Compile Include="Exchange\Commands\GetHistoricalPricingCommand.cs" />
     <Compile Include="Exchange\Commands\GetIntradayStatusCommand.cs" />
     <Compile Include="Exchange\Commands\GetMarketCalendarCommand.cs" />
@@ -56,11 +57,13 @@
     <Compile Include="Exchange\Commands\GetOptionExpirationCommand.cs" />
     <Compile Include="Exchange\Commands\GetOptionStrikeCommand.cs" />
     <Compile Include="Exchange\Commands\GetQuotesCommand.cs" />
+    <Compile Include="Exchange\Commands\GetSymbolLookupCommand.cs" />
     <Compile Include="Exchange\Commands\GetTimeAndSalesCommand.cs" />
     <Compile Include="Exchange\Interfaces\ITradierCommand.cs" />
     <Compile Include="Exchange\Interfaces\ITradierResponse.cs" />
     <Compile Include="Exchange\RawResponse.cs" />
     <Compile Include="Exchange\Responses\BaseResponse.cs" />
+    <Compile Include="Exchange\Responses\GetCompanySearchResponse.cs" />
     <Compile Include="Exchange\Responses\GetHistoricalPricingResponse.cs" />
     <Compile Include="Exchange\Responses\GetIntradayStatusResponse.cs" />
     <Compile Include="Exchange\Responses\GetMarketCalendarResponse.cs" />
@@ -68,15 +71,18 @@
     <Compile Include="Exchange\Responses\GetOptionExpirationResponse.cs" />
     <Compile Include="Exchange\Responses\GetOptionStrikeResponse.cs" />
     <Compile Include="Exchange\Responses\GetQuotesResponse.cs" />
+    <Compile Include="Exchange\Responses\GetSymbolLookupResponse.cs" />
     <Compile Include="Exchange\Responses\GetTimeAndSalesResponse.cs" />
     <Compile Include="Gateway.cs" />
     <Compile Include="Operations\MarketData.cs" />
+    <Compile Include="Operations\Requests\GetCompanySearchRequest.cs" />
     <Compile Include="Operations\Requests\GetHistoricalPricingRequest.cs" />
     <Compile Include="Operations\Requests\GetMarketCalendarRequest.cs" />
     <Compile Include="Operations\Requests\GetOptionChainRequest.cs" />
     <Compile Include="Operations\Requests\GetOptionExpirationRequest.cs" />
     <Compile Include="Operations\Requests\GetOptionStrikeRequest.cs" />
     <Compile Include="Operations\Requests\GetQuotesRequest.cs" />
+    <Compile Include="Operations\Requests\GetSymbolLookupRequest.cs" />
     <Compile Include="Operations\Requests\GetTimeAndSalesRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

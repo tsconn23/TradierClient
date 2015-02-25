@@ -21,6 +21,18 @@ namespace TradierClient.Operations
             _gateway = gateway;
         }
 
+        public async Task<GetCompanySearchResponse> GetCompanySearch(GetCompanySearchRequest request)
+        {
+            var command = new GetCompanySearchCommand(request.Keyword, request.IncludeIndexes, _gateway.AccesToken);
+            command.MessageFormat = _gateway.MessageFormat;
+            //Send command to API
+            var caller = new ApiCaller();
+            await caller.Call(command);
+            //Some handling of the response
+            var response = new GetCompanySearchResponse(command.RawResponse);
+            return response;
+        }
+
         public async Task<GetQuotesResponse> GetQuotes(GetQuotesRequest request)
         {
             var command = new GetQuotesCommand(request.Symbols, _gateway.AccesToken);
@@ -30,6 +42,18 @@ namespace TradierClient.Operations
             await caller.Call(command);
             //Some handling of the response
             var response = new GetQuotesResponse(command.RawResponse);
+            return response;
+        }
+
+        public async Task<GetSymbolLookupResponse> GetSymbolLookup(GetSymbolLookupRequest request)
+        {
+            var command = new GetSymbolLookupCommand(request.Keyword, request.Exchanges, request.Types, _gateway.AccesToken);
+            command.MessageFormat = _gateway.MessageFormat;
+            //Send command to API
+            var caller = new ApiCaller();
+            await caller.Call(command);
+            //Some handling of the response
+            var response = new GetSymbolLookupResponse(command.RawResponse);
             return response;
         }
 

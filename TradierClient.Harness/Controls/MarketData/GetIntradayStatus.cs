@@ -32,7 +32,7 @@ namespace TradierClient.Harness.Controls.MarketData
             }
         }
 
-        private bool Validate()
+        private bool ValidateInput()
         {
             bool isValid = true;
             string errorMsg = "";
@@ -74,7 +74,7 @@ namespace TradierClient.Harness.Controls.MarketData
 
         private async void btnGo_Click(object sender, EventArgs e)
         {
-            if (!Validate()) return;
+            if (!ValidateInput()) return;
             string responseText = "";
 
             if (ApiCall.CompareTo("Market/Get Intraday Status") == 0)

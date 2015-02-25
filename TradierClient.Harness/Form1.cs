@@ -76,6 +76,12 @@ namespace TradierClient.Harness
                 case "Market/Get Market Calendar":
                     pnlControlContainer.Controls.Add(new Controls.MarketData.GetIntradayStatus(gateway, apiCall));
                     break;
+                case "Market/Company Search":
+                    pnlControlContainer.Controls.Add(new Controls.MarketData.CompanySearch(gateway, apiCall));
+                    break;
+                case "Market/Symbol Lookup":
+                    pnlControlContainer.Controls.Add(new Controls.MarketData.SymbolLookup(gateway, apiCall));
+                    break;
             }
         }
     }

@@ -71,6 +71,7 @@
             // 
             this.cmbApiCall.FormattingEnabled = true;
             this.cmbApiCall.Items.AddRange(new object[] {
+            "Market/Company Search",
             "Market/Get Historical Pricing",
             "Market/Get Intraday Status",
             "Market/Get Market Calendar",
@@ -78,7 +79,8 @@
             "Market/Get Option Expirations",
             "Market/Get Option Strikes",
             "Market/Get Quotes",
-            "Market/Get Time And Sales"});
+            "Market/Get Time And Sales",
+            "Market/Symbol Lookup"});
             this.cmbApiCall.Location = new System.Drawing.Point(305, 6);
             this.cmbApiCall.Name = "cmbApiCall";
             this.cmbApiCall.Size = new System.Drawing.Size(380, 21);

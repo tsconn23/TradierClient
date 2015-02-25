@@ -52,6 +52,12 @@
     <Compile Include="Controls\BaseHarnessControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Controls\MarketData\CompanySearch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MarketData\CompanySearch.Designer.cs">
+      <DependentUpon>CompanySearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\MarketData\GetIntradayStatus.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -76,6 +82,12 @@
     <Compile Include="Controls\MarketData\GetTimeAndSales.Designer.cs">
       <DependentUpon>GetTimeAndSales.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\MarketData\SymbolLookup.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MarketData\SymbolLookup.Designer.cs">
+      <DependentUpon>SymbolLookup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +96,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\MarketData\CompanySearch.resx">
+      <DependentUpon>CompanySearch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\MarketData\GetIntradayStatus.resx">
       <DependentUpon>GetIntradayStatus.cs</DependentUpon>
     </EmbeddedResource>
@@ -95,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\MarketData\GetTimeAndSales.resx">
       <DependentUpon>GetTimeAndSales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MarketData\SymbolLookup.resx">
+      <DependentUpon>SymbolLookup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
