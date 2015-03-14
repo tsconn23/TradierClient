@@ -82,6 +82,14 @@ namespace TradierClient.Harness
                 case "Market/Symbol Lookup":
                     pnlControlContainer.Controls.Add(new Controls.MarketData.SymbolLookup(gateway, apiCall));
                     break;
+                case "User Data/Get Profile":
+                case "User Data/Get Balances":
+                case "User Data/Get Positions":
+                case "User Data/Get History":
+                case "User Data/Get Cost Basis":
+                case "User Data/Get Orders":
+                    pnlControlContainer.Controls.Add(new Controls.UserData.CommandPanel(gateway, apiCall));
+                    break;
             }
         }
     }

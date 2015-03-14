@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TradierClient.Exchange.Interfaces
 {
-    internal interface ITradierResponse
+    public interface ITradierResponse
     {
         RawResponse RawResponse { get; set; }
     }

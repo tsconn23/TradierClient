@@ -37,5 +37,15 @@ namespace TradierClient
                 return _marketData;
             }
         }
+
+        private UserData _userData = null;
+        public UserData UserData
+        {
+            get
+            {
+                _userData = _userData ?? new UserData(this);
+                return _userData;
+            }
+        }
     }
 }

@@ -80,7 +80,13 @@
             "Market/Get Option Strikes",
             "Market/Get Quotes",
             "Market/Get Time And Sales",
-            "Market/Symbol Lookup"});
+            "Market/Symbol Lookup",
+            "User Data/Get Profile",
+            "User Data/Get Balances",
+            "User Data/Get Positions",
+            "User Data/Get History",
+            "User Data/Get Cost Basis",
+            "User Data/Get Orders"});
             this.cmbApiCall.Location = new System.Drawing.Point(305, 6);
             this.cmbApiCall.Name = "cmbApiCall";
             this.cmbApiCall.Size = new System.Drawing.Size(380, 21);

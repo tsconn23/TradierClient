@@ -59,10 +59,17 @@
     <Compile Include="Exchange\Commands\GetQuotesCommand.cs" />
     <Compile Include="Exchange\Commands\GetSymbolLookupCommand.cs" />
     <Compile Include="Exchange\Commands\GetTimeAndSalesCommand.cs" />
+    <Compile Include="Exchange\Commands\GetUserBalancesCommand.cs" />
+    <Compile Include="Exchange\Commands\GetUserCostBasisCommand.cs" />
+    <Compile Include="Exchange\Commands\GetUserHistoryCommand.cs" />
+    <Compile Include="Exchange\Commands\GetUserOrderCommand.cs" />
+    <Compile Include="Exchange\Commands\GetUserPositionsCommand.cs" />
+    <Compile Include="Exchange\Commands\GetUserProfileCommand.cs" />
     <Compile Include="Exchange\Interfaces\ITradierCommand.cs" />
     <Compile Include="Exchange\Interfaces\ITradierResponse.cs" />
     <Compile Include="Exchange\RawResponse.cs" />
     <Compile Include="Exchange\Responses\BaseResponse.cs" />
+    <Compile Include="Exchange\Responses\GeneralUserDataResponse.cs" />
     <Compile Include="Exchange\Responses\GetCompanySearchResponse.cs" />
     <Compile Include="Exchange\Responses\GetHistoricalPricingResponse.cs" />
     <Compile Include="Exchange\Responses\GetIntradayStatusResponse.cs" />
@@ -74,6 +81,7 @@
     <Compile Include="Exchange\Responses\GetSymbolLookupResponse.cs" />
     <Compile Include="Exchange\Responses\GetTimeAndSalesResponse.cs" />
     <Compile Include="Gateway.cs" />
+    <Compile Include="Operations\BaseMarketOperations.cs" />
     <Compile Include="Operations\MarketData.cs" />
     <Compile Include="Operations\Requests\GetCompanySearchRequest.cs" />
     <Compile Include="Operations\Requests\GetHistoricalPricingRequest.cs" />
@@ -84,6 +92,7 @@
     <Compile Include="Operations\Requests\GetQuotesRequest.cs" />
     <Compile Include="Operations\Requests\GetSymbolLookupRequest.cs" />
     <Compile Include="Operations\Requests\GetTimeAndSalesRequest.cs" />
+    <Compile Include="Operations\UserData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

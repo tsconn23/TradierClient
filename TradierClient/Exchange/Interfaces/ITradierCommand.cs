@@ -4,7 +4,7 @@ using System.Net.Http;
 
 namespace TradierClient.Exchange.Interfaces
 {
-    internal interface ITradierCommand
+    public interface ITradierCommand
     {
         string AccessToken { get; }
 

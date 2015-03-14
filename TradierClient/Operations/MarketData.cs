@@ -12,22 +12,17 @@ using TradierClient.Operations.Requests;
 
 namespace TradierClient.Operations
 {
-    public class MarketData
+    public class MarketData : BaseMarketOperations
     {
-        private readonly Gateway _gateway = null;
-
-        public MarketData(Gateway gateway)
-        {
-            _gateway = gateway;
-        }
+        public MarketData(Gateway gateway) : base(gateway) { }
 
         public async Task<GetCompanySearchResponse> GetCompanySearch(GetCompanySearchRequest request)
         {
-            var command = new GetCompanySearchCommand(request.Keyword, request.IncludeIndexes, _gateway.AccesToken);
-            command.MessageFormat = _gateway.MessageFormat;
+            var command = new GetCompanySearchCommand(request.Keyword, request.IncludeIndexes, Gateway.AccesToken);
+
             //Send command to API
-            var caller = new ApiCaller();
-            await caller.Call(command);
+            await MakeApiCall(command);
+
             //Some handling of the response
             var response = new GetCompanySearchResponse(command.RawResponse);
             return response;
@@ -35,11 +30,11 @@ namespace TradierClient.Operations
 
         public async Task<GetQuotesResponse> GetQuotes(GetQuotesRequest request)
         {
-            var command = new GetQuotesCommand(request.Symbols, _gateway.AccesToken);
-            command.MessageFormat = _gateway.MessageFormat;
+            var command = new GetQuotesCommand(request.Symbols, Gateway.AccesToken);
+
             //Send command to API
-            var caller = new ApiCaller();
-            await caller.Call(command);
+            await MakeApiCall(command);
+
             //Some handling of the response
             var response = new GetQuotesResponse(command.RawResponse);
             return response;
@@ -47,11 +42,11 @@ namespace TradierClient.Operations
 
         public async Task<GetSymbolLookupResponse> GetSymbolLookup(GetSymbolLookupRequest request)
         {
-            var command = new GetSymbolLookupCommand(request.Keyword, request.Exchanges, request.Types, _gateway.AccesToken);
-            command.MessageFormat = _gateway.MessageFormat;
+            var command = new GetSymbolLookupCommand(request.Keyword, request.Exchanges, request.Types, Gateway.AccesToken);
+
             //Send command to API
-            var caller = new ApiCaller();
-            await caller.Call(command);
+            await MakeApiCall(command);
+
             //Some handling of the response
             var response = new GetSymbolLookupResponse(command.RawResponse);
             return response;
@@ -59,11 +54,11 @@ namespace TradierClient.Operations
 
         public async Task<GetIntradayStatusResponse> GetIntradayStatus()
         {
-            var command = new GetIntradayStatusCommand(_gateway.AccesToken);
-            command.MessageFormat = _gateway.MessageFormat;
+            var command = new GetIntradayStatusCommand(Gateway.AccesToken);
+
             //Send command to API
-            var caller = new ApiCaller();
-            await caller.Call(command);
+            await MakeApiCall(command);
+
             //Some handling of the response
             var response = new GetIntradayStatusResponse(command.RawResponse);
             return response;
@@ -71,11 +66,11 @@ namespace TradierClient.Operations
 
         public async Task<GetMarketCalendarResponse> GetMarketCalendar(GetMarketCalendarRequest request)
         {
-            var command = new GetMarketCalendarCommand(request.Month, request.Year, _gateway.AccesToken);
-            command.MessageFormat = _gateway.MessageFormat;
+            var command = new GetMarketCalendarCommand(request.Month, request.Year, Gateway.AccesToken);
+
             //Send command to API
-            var caller = new ApiCaller();
-            await caller.Call(command);
+            await MakeApiCall(command);
+
             //Some handling of the response
             var response = new GetMarketCalendarResponse(command.RawResponse);
             return response;
@@ -83,17 +78,15 @@ namespace TradierClient.Operations
 
         public async Task<GetTimeAndSalesResponse> GetTimeAndSales(GetTimeAndSalesRequest request)
         {
-            var command = new GetTimeAndSalesCommand(request.Symbol, _gateway.AccesToken);
-            command.MessageFormat = _gateway.MessageFormat;
-
+            var command = new GetTimeAndSalesCommand(request.Symbol, Gateway.AccesToken);
             command.Interval = request.Interval;
             command.SessionFilter = request.SessionFilter;
             command.StartDateTime = request.StartDateTime;
             command.EndDateTime = request.EndDateTime;
 
             //Send command to API
-            var caller = new ApiCaller();
-            await caller.Call(command);
+            await MakeApiCall(command);
+
             //Some handling of the response
             var response = new GetTimeAndSalesResponse(command.RawResponse);
             return response;
@@ -101,16 +94,14 @@ namespace TradierClient.Operations
 
         public async Task<GetHistoricalPricingResponse> GetHistoricalPricing(GetHistoricalPricingRequest request)
         {
-            var command = new GetHistoricalPricingCommand(request.Symbol, _gateway.AccesToken);
-            command.MessageFormat = _gateway.MessageFormat;
-
+            var command = new GetHistoricalPricingCommand(request.Symbol, Gateway.AccesToken);
             command.Interval = request.Interval;
             command.StartDateTime = request.StartDateTime;
             command.EndDateTime = request.EndDateTime;
 
             //Send command to API
-            var caller = new ApiCaller();
-            await caller.Call(command);
+            await MakeApiCall(command);
+
             //Some handling of the response
             var response = new GetHistoricalPricingResponse(command.RawResponse);
             return response;
@@ -118,12 +109,11 @@ namespace TradierClient.Operations
 
         public async Task<GetOptionChainResponse> GetOptionChain(GetOptionChainRequest request)
         {
-            var command = new GetOptionChainCommand(request.Symbol, request.Expiration, _gateway.AccesToken);
-            command.MessageFormat = _gateway.MessageFormat;
+            var command = new GetOptionChainCommand(request.Symbol, request.Expiration, Gateway.AccesToken);
 
             //Send command to API
-            var caller = new ApiCaller();
-            await caller.Call(command);
+            await MakeApiCall(command);
+
             //Some handling of the response
             var response = new GetOptionChainResponse(command.RawResponse);
             return response;
@@ -131,12 +121,11 @@ namespace TradierClient.Operations
 
         public async Task<GetOptionExpirationResponse> GetOptionExpirations(GetOptionExpirationRequest request)
         {
-            var command = new GetOptionExpirationCommand(request.Symbol, _gateway.AccesToken);
-            command.MessageFormat = _gateway.MessageFormat;
+            var command = new GetOptionExpirationCommand(request.Symbol, Gateway.AccesToken);
 
             //Send command to API
-            var caller = new ApiCaller();
-            await caller.Call(command);
+            await MakeApiCall(command);
+
             //Some handling of the response
             var response = new GetOptionExpirationResponse(command.RawResponse);
             return response;
@@ -144,12 +133,11 @@ namespace TradierClient.Operations
 
         public async Task<GetOptionStrikeResponse> GetOptionStrikes(GetOptionStrikeRequest request)
         {
-            var command = new GetOptionStrikeCommand(request.Symbol, request.Expiration, _gateway.AccesToken);
-            command.MessageFormat = _gateway.MessageFormat;
+            var command = new GetOptionStrikeCommand(request.Symbol, request.Expiration, Gateway.AccesToken);
 
             //Send command to API
-            var caller = new ApiCaller();
-            await caller.Call(command);
+            await MakeApiCall(command);
+
             //Some handling of the response
             var response = new GetOptionStrikeResponse(command.RawResponse);
             return response;
