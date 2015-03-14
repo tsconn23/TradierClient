@@ -1,7 +1,9 @@
 # TradierClient
 .NET API Client for Tradier.com
 
-This is a work in progress. I am working on implementing a .NET client for the Tradier.com platform. There are currently two projects in the solution.
+This is a work in progress. I am working on implementing a .NET client for the Tradier.com platform. Currently I have implemented all of the User Data and Market Data methods (with the exception of streaming quotes) in Tradier's API.
+
+There are currently two projects in the solution.
 
 1.) TradierClient -- This is the actual client library
 
