@@ -9,6 +9,8 @@ There are currently two projects in the solution.
 
 2.) TradierClient.Harness -- This is a simple GUI which can be used to test the calls and also to show how to work with the TradierClient library.
 
+Please note that the Harness project has an App.config.sample file which you will have to rename. You will also need to enter your Tradier platform access token in the appropriate appSettings entry.
+
 ------------------------------------------------------------------------------------------
 It will be noted by users of this library that the responses for the MarketData calls are each wrapped by a specific class, whereas the AccountData and UserData calls return a general type of response class. This is because I'm currently undecided about what to do with the response and just return the raw XML/JSON. I have it in mind to wrap the XML/JSON in an object model so that the consumer won't have to, but to also pass through the raw response as currently happens for completeness sake.
 
