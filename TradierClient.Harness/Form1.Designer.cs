@@ -71,6 +71,12 @@
             // 
             this.cmbApiCall.FormattingEnabled = true;
             this.cmbApiCall.Items.AddRange(new object[] {
+            "Account/Get Balances",
+            "Account/Get Positions",
+            "Account/Get History",
+            "Account/Get Cost Basis",
+            "Account/Get Orders",
+            "Account/Get Order Status",
             "Market/Company Search",
             "Market/Get Historical Pricing",
             "Market/Get Intraday Status",

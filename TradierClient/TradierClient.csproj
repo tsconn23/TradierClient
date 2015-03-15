@@ -49,6 +49,12 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Exchange\ApiCaller.cs" />
     <Compile Include="Exchange\Commands\BaseGetCommand.cs" />
+    <Compile Include="Exchange\Commands\GetAccountBalancesCommand.cs" />
+    <Compile Include="Exchange\Commands\GetAccountCostBasisCommand.cs" />
+    <Compile Include="Exchange\Commands\GetAccountHistoryCommand.cs" />
+    <Compile Include="Exchange\Commands\GetAccountOrdersCommand.cs" />
+    <Compile Include="Exchange\Commands\GetAccountOrderStatusCommand.cs" />
+    <Compile Include="Exchange\Commands\GetAccountPositionsCommand.cs" />
     <Compile Include="Exchange\Commands\GetCompanySearchCommand.cs" />
     <Compile Include="Exchange\Commands\GetHistoricalPricingCommand.cs" />
     <Compile Include="Exchange\Commands\GetIntradayStatusCommand.cs" />
@@ -69,6 +75,7 @@
     <Compile Include="Exchange\Interfaces\ITradierResponse.cs" />
     <Compile Include="Exchange\RawResponse.cs" />
     <Compile Include="Exchange\Responses\BaseResponse.cs" />
+    <Compile Include="Exchange\Responses\GeneralAccountDataResponse.cs" />
     <Compile Include="Exchange\Responses\GeneralUserDataResponse.cs" />
     <Compile Include="Exchange\Responses\GetCompanySearchResponse.cs" />
     <Compile Include="Exchange\Responses\GetHistoricalPricingResponse.cs" />
@@ -81,8 +88,12 @@
     <Compile Include="Exchange\Responses\GetSymbolLookupResponse.cs" />
     <Compile Include="Exchange\Responses\GetTimeAndSalesResponse.cs" />
     <Compile Include="Gateway.cs" />
+    <Compile Include="Operations\AccountData.cs" />
     <Compile Include="Operations\BaseMarketOperations.cs" />
     <Compile Include="Operations\MarketData.cs" />
+    <Compile Include="Operations\Requests\GetAccountDataRequest.cs" />
+    <Compile Include="Operations\Requests\GetAccountHistoryRequest.cs" />
+    <Compile Include="Operations\Requests\GetAccountOrderStatusRequest.cs" />
     <Compile Include="Operations\Requests\GetCompanySearchRequest.cs" />
     <Compile Include="Operations\Requests\GetHistoricalPricingRequest.cs" />
     <Compile Include="Operations\Requests\GetMarketCalendarRequest.cs" />

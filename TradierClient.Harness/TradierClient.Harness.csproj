@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\AccountData\CommandPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\AccountData\CommandPanel.Designer.cs">
+      <DependentUpon>CommandPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\BaseHarnessControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\AccountData\CommandPanel.resx">
+      <DependentUpon>CommandPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\MarketData\CompanySearch.resx">
       <DependentUpon>CompanySearch.cs</DependentUpon>
     </EmbeddedResource>

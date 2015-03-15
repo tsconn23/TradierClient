@@ -90,6 +90,14 @@ namespace TradierClient.Harness
                 case "User Data/Get Orders":
                     pnlControlContainer.Controls.Add(new Controls.UserData.CommandPanel(gateway, apiCall));
                     break;
+                case "Account/Get Balances":
+                case "Account/Get Positions":
+                case "Account/Get History":
+                case "Account/Get Cost Basis":
+                case "Account/Get Orders":
+                case "Account/Get Order Status":
+                    pnlControlContainer.Controls.Add(new Controls.AccountData.CommandPanel(gateway, apiCall));
+                    break;
             }
         }
     }

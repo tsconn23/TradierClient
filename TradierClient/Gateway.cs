@@ -47,5 +47,15 @@ namespace TradierClient
                 return _userData;
             }
         }
+
+        private AccountData _accountData = null;
+        public AccountData AccountData
+        {
+            get
+            {
+                _accountData = _accountData ?? new AccountData(this);
+                return _accountData;
+            }
+        }
     }
 }
