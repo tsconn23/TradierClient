@@ -12,4 +12,12 @@ namespace TradierClient
         JSON,
         XML
     }
+
+    public enum InstrumentType
+    {
+        Undefined,
+        Stock,
+        ETF,
+        Index
+    }
 }
