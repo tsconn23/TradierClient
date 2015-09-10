@@ -76,6 +76,7 @@
     <Compile Include="Exchange\Interfaces\ITradierResponse.cs" />
     <Compile Include="Exchange\RawResponse.cs" />
     <Compile Include="Exchange\Responses\BaseResponse.cs" />
+    <Compile Include="Exchange\Responses\DTO\MarketDay.cs" />
     <Compile Include="Exchange\Responses\DTO\MarketQuote.cs" />
     <Compile Include="Exchange\Responses\GeneralAccountDataResponse.cs" />
     <Compile Include="Exchange\Responses\GeneralUserDataResponse.cs" />
