@@ -9,5 +9,6 @@ namespace TradierClient.Exchange.Interfaces
     public interface ITradierResponse
     {
         RawResponse RawResponse { get; set; }
+        MessageFormatEnum MessageFormat { get; }
     }
 }

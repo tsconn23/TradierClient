@@ -17,5 +17,7 @@ namespace TradierClient.Exchange.Responses
         }
 
         public RawResponse RawResponse { get; set; }
+
+        public MessageFormatEnum MessageFormat { get; protected set; }
     }
 }

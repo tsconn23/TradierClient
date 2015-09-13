@@ -24,7 +24,7 @@ namespace TradierClient.Operations
             await MakeApiCall(command);
 
             //Some handling of the response
-            var response = new GeneralAccountDataResponse(command.RawResponse);
+            var response = new GeneralAccountDataResponse(command.RawResponse, command.MessageFormat);
             return response;
         }
 
@@ -36,7 +36,7 @@ namespace TradierClient.Operations
             await MakeApiCall(command);
 
             //Some handling of the response
-            var response = new GeneralAccountDataResponse(command.RawResponse);
+            var response = new GeneralAccountDataResponse(command.RawResponse, command.MessageFormat);
             return response;
         }
 
@@ -48,7 +48,7 @@ namespace TradierClient.Operations
             await MakeApiCall(command);
 
             //Some handling of the response
-            var response = new GeneralAccountDataResponse(command.RawResponse);
+            var response = new GeneralAccountDataResponse(command.RawResponse, command.MessageFormat);
             return response;
         }
 
@@ -60,7 +60,7 @@ namespace TradierClient.Operations
             await MakeApiCall(command);
 
             //Some handling of the response
-            var response = new GeneralAccountDataResponse(command.RawResponse);
+            var response = new GeneralAccountDataResponse(command.RawResponse, command.MessageFormat);
             return response;
         }
 
@@ -72,7 +72,7 @@ namespace TradierClient.Operations
             await MakeApiCall(command);
 
             //Some handling of the response
-            var response = new GeneralAccountDataResponse(command.RawResponse);
+            var response = new GeneralAccountDataResponse(command.RawResponse, command.MessageFormat);
             return response;
         }
 
@@ -84,7 +84,7 @@ namespace TradierClient.Operations
             await MakeApiCall(command);
 
             //Some handling of the response
-            var response = new GeneralAccountDataResponse(command.RawResponse);
+            var response = new GeneralAccountDataResponse(command.RawResponse, command.MessageFormat);
             return response;
         }
     }

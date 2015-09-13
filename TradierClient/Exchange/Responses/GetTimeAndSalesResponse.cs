@@ -8,6 +8,9 @@ namespace TradierClient.Exchange.Responses
 {
     public class GetTimeAndSalesResponse : BaseResponse
     {
-        public GetTimeAndSalesResponse(RawResponse raw) : base(raw) { }
+        public GetTimeAndSalesResponse(RawResponse raw, MessageFormatEnum format) : base(raw)
+        {
+            this.MessageFormat = format;
+        }
     }
 }

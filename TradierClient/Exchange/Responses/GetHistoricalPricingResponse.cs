@@ -8,6 +8,9 @@ namespace TradierClient.Exchange.Responses
 {
     public class GetHistoricalPricingResponse :BaseResponse
     {
-        public GetHistoricalPricingResponse(RawResponse raw) : base(raw) { }
+        public GetHistoricalPricingResponse(RawResponse raw, MessageFormatEnum format) : base(raw)
+        {
+            this.MessageFormat = format;
+        }
     }
 }

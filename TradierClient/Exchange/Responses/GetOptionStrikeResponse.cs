@@ -8,6 +8,9 @@ namespace TradierClient.Exchange.Responses
 {
     public class GetOptionStrikeResponse : BaseResponse
     {
-        public GetOptionStrikeResponse(RawResponse raw) : base(raw) { }
+        public GetOptionStrikeResponse(RawResponse raw, MessageFormatEnum format) : base(raw)
+        {
+            this.MessageFormat = format;
+        }
     }
 }

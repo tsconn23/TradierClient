@@ -8,6 +8,9 @@ namespace TradierClient.Exchange.Responses
 {
     public class GetOptionExpirationResponse : BaseResponse
     {
-        public GetOptionExpirationResponse(RawResponse raw) : base(raw) { }
+        public GetOptionExpirationResponse(RawResponse raw, MessageFormatEnum format) : base(raw)
+        {
+            this.MessageFormat = format;
+        }
     }
 }

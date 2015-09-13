@@ -8,6 +8,9 @@ namespace TradierClient.Exchange.Responses
 {
     public class GetIntradayStatusResponse: BaseResponse
     {
-        public GetIntradayStatusResponse(RawResponse raw) : base(raw) { }
+        public GetIntradayStatusResponse(RawResponse raw, MessageFormatEnum format) : base(raw)
+        {
+            this.MessageFormat = format;
+        }
     }
 }

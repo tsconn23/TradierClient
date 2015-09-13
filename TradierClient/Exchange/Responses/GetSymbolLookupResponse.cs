@@ -8,6 +8,9 @@ namespace TradierClient.Exchange.Responses
 {
     public class GetSymbolLookupResponse : BaseResponse
     {
-        public GetSymbolLookupResponse(RawResponse raw) : base(raw) { }
+        public GetSymbolLookupResponse(RawResponse raw, MessageFormatEnum format) : base(raw)
+        {
+            this.MessageFormat = format;
+        }
     }
 }

@@ -15,6 +15,8 @@ namespace TradierClient.Harness
 {
     public partial class Form1 : Form
     {
+        private Gateway _apiGateway = null;
+
         public Form1()
         {
             InitializeComponent();
@@ -31,8 +33,13 @@ namespace TradierClient.Harness
                     return;
                 }
 
-                var tradierGateway = InitializeGateway();
-                FindControlAndAddToContainer(tradierGateway, cmbApiCall.SelectedItem.ToString());
+                if (_apiGateway == null)
+                {
+                    _apiGateway = InitializeGateway();
+                    SetSelectedMessageFormat();
+                }
+
+                FindControlAndAddToContainer(_apiGateway, cmbApiCall.SelectedItem.ToString());
             }
         }
 
@@ -40,18 +47,7 @@ namespace TradierClient.Harness
         private Gateway InitializeGateway()
         {
             string accessToken = ConfigurationManager.AppSettings["AccessToken"];
-            var gateway = new Gateway(accessToken);
-
-            switch(cmbMessageFormat.SelectedItem.ToString())
-            {
-                case "JSON":
-                    gateway.MessageFormat = MessageFormatEnum.JSON;
-                    break;
-                case "XML":
-                    gateway.MessageFormat = MessageFormatEnum.XML;
-                    break;
-            }
-            return gateway;
+            return new Gateway(accessToken);
         }
 
         private void FindControlAndAddToContainer(Gateway gateway, string apiCall)
@@ -98,6 +94,27 @@ namespace TradierClient.Harness
                 case "Account/Get Order Status":
                     pnlControlContainer.Controls.Add(new Controls.AccountData.CommandPanel(gateway, apiCall));
                     break;
+            }
+        }
+
+        private void cmbMessageFormat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetSelectedMessageFormat();
+        }
+
+        private void SetSelectedMessageFormat()
+        {
+            if (_apiGateway != null)
+            {
+                switch (cmbMessageFormat.SelectedItem.ToString())
+                {
+                    case "JSON":
+                        _apiGateway.MessageFormat = MessageFormatEnum.JSON;
+                        break;
+                    case "XML":
+                        _apiGateway.MessageFormat = MessageFormatEnum.XML;
+                        break;
+                }
             }
         }
     }

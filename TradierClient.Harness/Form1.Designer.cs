@@ -55,7 +55,7 @@
             this.cmbMessageFormat.Name = "cmbMessageFormat";
             this.cmbMessageFormat.Size = new System.Drawing.Size(121, 21);
             this.cmbMessageFormat.TabIndex = 4;
-            this.cmbMessageFormat.SelectedIndex = 0;
+            this.cmbMessageFormat.SelectedIndexChanged += new System.EventHandler(this.cmbMessageFormat_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -96,8 +96,8 @@
             this.cmbApiCall.Location = new System.Drawing.Point(305, 6);
             this.cmbApiCall.Name = "cmbApiCall";
             this.cmbApiCall.Size = new System.Drawing.Size(380, 21);
+            this.cmbApiCall.SelectedIndexChanged += new System.EventHandler(this.cmbApiCall_SelectedIndexChanged);
             this.cmbApiCall.TabIndex = 6;
-            this.cmbApiCall.SelectedIndexChanged +=cmbApiCall_SelectedIndexChanged;
             // 
             // pnlControlContainer
             // 

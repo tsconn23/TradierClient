@@ -10,9 +10,11 @@ namespace TradierClient.Exchange.Responses
 {
     public class GetQuotesResponse : BaseResponse
     {
-        public GetQuotesResponse(RawResponse raw) : base(raw)
+        public GetQuotesResponse(RawResponse raw, MessageFormatEnum format) : base(raw)
         {
-            _quotes = MapToQuotes(raw.Content);
+            this.MessageFormat = format;
+            if(this.MessageFormat == MessageFormatEnum.JSON)
+                _quotes = MapToQuotes(raw.Content);
         }
 
         private List<DTO.MarketQuote> _quotes;

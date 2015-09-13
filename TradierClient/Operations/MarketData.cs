@@ -24,7 +24,7 @@ namespace TradierClient.Operations
             await MakeApiCall(command);
 
             //Some handling of the response
-            var response = new GetCompanySearchResponse(command.RawResponse);
+            var response = new GetCompanySearchResponse(command.RawResponse, command.MessageFormat);
             return response;
         }
 
@@ -36,7 +36,7 @@ namespace TradierClient.Operations
             await MakeApiCall(command);
 
             //Some handling of the response
-            var response = new GetQuotesResponse(command.RawResponse);
+            var response = new GetQuotesResponse(command.RawResponse, command.MessageFormat);
             return response;
         }
 
@@ -48,7 +48,7 @@ namespace TradierClient.Operations
             await MakeApiCall(command);
 
             //Some handling of the response
-            var response = new GetSymbolLookupResponse(command.RawResponse);
+            var response = new GetSymbolLookupResponse(command.RawResponse, command.MessageFormat);
             return response;
         }
 
@@ -60,7 +60,7 @@ namespace TradierClient.Operations
             await MakeApiCall(command);
 
             //Some handling of the response
-            var response = new GetIntradayStatusResponse(command.RawResponse);
+            var response = new GetIntradayStatusResponse(command.RawResponse, command.MessageFormat);
             return response;
         }
 
@@ -72,7 +72,7 @@ namespace TradierClient.Operations
             await MakeApiCall(command);
 
             //Some handling of the response
-            var response = new GetMarketCalendarResponse(command.RawResponse);
+            var response = new GetMarketCalendarResponse(command.RawResponse, command.MessageFormat);
             return response;
         }
 
@@ -88,7 +88,7 @@ namespace TradierClient.Operations
             await MakeApiCall(command);
 
             //Some handling of the response
-            var response = new GetTimeAndSalesResponse(command.RawResponse);
+            var response = new GetTimeAndSalesResponse(command.RawResponse, command.MessageFormat);
             return response;
         }
 
@@ -103,7 +103,7 @@ namespace TradierClient.Operations
             await MakeApiCall(command);
 
             //Some handling of the response
-            var response = new GetHistoricalPricingResponse(command.RawResponse);
+            var response = new GetHistoricalPricingResponse(command.RawResponse, command.MessageFormat);
             return response;
         }
 
@@ -115,7 +115,7 @@ namespace TradierClient.Operations
             await MakeApiCall(command);
 
             //Some handling of the response
-            var response = new GetOptionChainResponse(command.RawResponse);
+            var response = new GetOptionChainResponse(command.RawResponse, command.MessageFormat);
             return response;
         }
 
@@ -127,7 +127,7 @@ namespace TradierClient.Operations
             await MakeApiCall(command);
 
             //Some handling of the response
-            var response = new GetOptionExpirationResponse(command.RawResponse);
+            var response = new GetOptionExpirationResponse(command.RawResponse, command.MessageFormat);
             return response;
         }
 
@@ -139,7 +139,7 @@ namespace TradierClient.Operations
             await MakeApiCall(command);
 
             //Some handling of the response
-            var response = new GetOptionStrikeResponse(command.RawResponse);
+            var response = new GetOptionStrikeResponse(command.RawResponse, command.MessageFormat);
             return response;
         }
     }

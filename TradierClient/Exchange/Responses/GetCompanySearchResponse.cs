@@ -8,6 +8,9 @@ namespace TradierClient.Exchange.Responses
 {
     public class GetCompanySearchResponse :BaseResponse
     {
-        public GetCompanySearchResponse(RawResponse raw) : base(raw) { }
+        public GetCompanySearchResponse(RawResponse raw, MessageFormatEnum format) : base(raw)
+        {
+            this.MessageFormat = format;
+        }
     }
 }

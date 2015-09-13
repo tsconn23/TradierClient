@@ -9,9 +9,11 @@ namespace TradierClient.Exchange.Responses
 {
     public class GetMarketCalendarResponse:BaseResponse
     {
-        public GetMarketCalendarResponse(RawResponse raw) : base(raw)
+        public GetMarketCalendarResponse(RawResponse raw, MessageFormatEnum format) : base(raw)
         {
-            _days = Parse(raw.Content);
+            this.MessageFormat = format;
+            if (this.MessageFormat == MessageFormatEnum.JSON)
+                _days = Parse(raw.Content);
         }
 
         private List<DTO.MarketDay> _days;

@@ -8,6 +8,9 @@ namespace TradierClient.Exchange.Responses
 {
     public class GeneralUserDataResponse : BaseResponse
     {
-        public GeneralUserDataResponse(RawResponse raw) : base(raw) { }
+        public GeneralUserDataResponse(RawResponse raw, MessageFormatEnum format) : base(raw)
+        {
+            this.MessageFormat = format;
+        }
     }
 }
