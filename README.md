@@ -12,6 +12,8 @@ There are currently two projects in the solution.
 Please note that the Harness project has an App.config.sample file which you will have to rename. You will also need to enter your Tradier platform access token in the appropriate appSettings entry.
 
 ------------------------------------------------------------------------------------------
-It will be noted by users of this library that the responses for the MarketData calls are each wrapped by a specific class, whereas the AccountData and UserData calls return a general type of response class. This is because I'm currently undecided about what to do with the response and just return the raw XML/JSON. I have it in mind to wrap the XML/JSON in an object model so that the consumer won't have to, but to also pass through the raw response as currently happens for completeness sake.
+It will be noted by users of this library that the responses for the MarketData calls are each wrapped by a specific class, whereas the AccountData and UserData calls return a general type of response class. This is because I'm currently undecided about what to do with the response and so I just return the raw XML/JSON. I have started, as my own use cases warrant, to wrap the JSON in an object model so that the consumer won't have to, but will continue pass through the raw response as currently happens for completeness sake.
 
-I suppose once I start using this library for my own application and start working with it practically, I'll make a decision on how this implementation goes.
+Parsing into an object model for the response is only supported for JSON because that's what I'm using. And yeah I guess I need to make the constructors aware of the response format, because I just noticed I'm assuming JSON is the response content type for the two response types I've converted.
+
+But hey, if you like XML, you're welcome to chip in with parsing in that format.
